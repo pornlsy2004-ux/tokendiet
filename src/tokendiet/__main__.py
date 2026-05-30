@@ -1,11 +1,11 @@
-"""`tokendiet` / `python -m tokendiet` - 验证安装并跑一个示例。"""
+"""`tokendiet` / `python -m tokendiet` - verify the install and run a demo."""
 from . import __version__, subtract
 
 
 def main() -> None:
     print()
-    print(f"  tokendiet v{__version__}  ->  安装成功")
-    print("  github.com/pornlsy2004-ux/tokendiet   (上下文做减法)")
+    print(f"  tokendiet v{__version__}   ->   installed OK")
+    print("  github.com/pornlsy2004-ux/tokendiet   (context, by subtraction)")
     print()
     q = "What is the hotel rate cap for Tokyo?"
     ctx = (
@@ -16,11 +16,11 @@ def main() -> None:
     )
     r = subtract(q, ctx)
     print("  demo (lexical backend):")
-    print(f"    Q: {q}")
-    print(f"    {r.stats['raw_tokens']} tokens  ->  {r.stats['kept_tokens']} tokens")
+    print(f"    Q:    {q}")
+    print(f"    {r.stats['raw_tokens']} tokens  ->  {r.stats['kept_tokens']} tokens kept")
     print(f"    kept: {r.text}")
     print()
-    print("  用法:  from tokendiet import subtract;  subtract(question, context)")
+    print("  usage:  from tokendiet import subtract;  subtract(question, context)")
     print()
 
 
