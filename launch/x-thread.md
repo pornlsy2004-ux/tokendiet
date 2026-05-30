@@ -52,4 +52,4 @@ Repo = the field guide + the benchmark that killed my own headline (including it
 Same answer. A fraction of the tokens.
 
 ⭐ if you'll go delete some context:
-https://github.com/pornlsy2004-ux/subtraction
+https://github.com/pornlsy2004-ux/tokendiet

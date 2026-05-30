@@ -6,7 +6,7 @@
 ## Title (pick one — plain, no hype)
 
 - `Show HN: We tried to prove LLM context compression hurts accuracy. It doesn't.`
-- `Show HN: Subtraction – same answer at 1/8 the tokens (and a null result on compression)`
+- `Show HN: tokendiet – same answer at 1/8 the tokens (and a null result on compression)`
 
 ## Body
 
@@ -31,4 +31,4 @@ the cases where subtraction itself failed (cut too far and you lose a bridge the
 N=13 and reproducible; I'd genuinely like someone to push the docs long enough that compression finally
 bites.
 
-Repo: https://github.com/pornlsy2004-ux/subtraction
+Repo: https://github.com/pornlsy2004-ux/tokendiet

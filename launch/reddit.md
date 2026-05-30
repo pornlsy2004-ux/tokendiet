@@ -25,7 +25,7 @@ changed was tokens: subtraction matched full-document accuracy at ~1/8 the token
 
 The takeaway I landed on: compression isn't the lever, *inclusion* is — and the reason that matters is
 scale (long context degrades, per Du et al. EMNLP 2025 / Chroma / Lost-in-the-Middle). Writeup + the
-reproducible harness (including where subtraction itself failed) here: https://github.com/pornlsy2004-ux/subtraction
+reproducible harness (including where subtraction itself failed) here: https://github.com/pornlsy2004-ux/tokendiet
 
 Genuinely want someone to push the docs long enough that compression finally bites — the harness takes
 your own docs.
@@ -47,4 +47,4 @@ cheaply, *if* you can identify the relevant unit.
 
 I'm framing the actual motivation as the long-context degradation literature (Du et al. 2025; Chroma
 context rot; Liu et al. 2024). Curious about results where careful compression *recovers* long-context
-accuracy vs. raw, rather than just reducing cost. Harness + data: https://github.com/pornlsy2004-ux/subtraction
+accuracy vs. raw, rather than just reducing cost. Harness + data: https://github.com/pornlsy2004-ux/tokendiet

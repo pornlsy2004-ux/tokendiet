@@ -1,6 +1,6 @@
 <div align="center">
 
-# Subtraction
+# tokendiet
 
 ### Same answer. A fraction of the tokens.
 
@@ -18,7 +18,7 @@ The lever isn't how you pack the context. It's how little you put in it.
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![Reproducible](https://img.shields.io/badge/benchmark-reproducible-3fb950.svg)](benchmark/)
-[![Stars](https://img.shields.io/github/stars/pornlsy2004-ux/subtraction?style=social)](https://github.com/pornlsy2004-ux/subtraction)
+[![Stars](https://img.shields.io/github/stars/pornlsy2004-ux/tokendiet?style=social)](https://github.com/pornlsy2004-ux/tokendiet)
 
 </div>
 
@@ -88,7 +88,7 @@ A discipline, not a tool:
 The *principle* is a discipline. But the **selection** step — find the slice the task needs, drop the distractors — can be a tool. So we built one.
 
 ```python
-from subtraction import subtract
+from tokendiet import subtract
 
 # Local, zero-dependency baseline (TF-IDF relevance, no API key):
 r = subtract("What is the hotel rate cap for Tokyo?", travel_policy)
@@ -99,7 +99,7 @@ print(r.stats)    # {'raw_tokens': 107, 'kept_tokens': 43, 'ratio': 0.402, ...}
 For the hard cases, **bring your own model** — it picks the minimal sufficient set and flags distractors (the *answer-impact* mode):
 
 ```python
-from subtraction import subtract, llm_backend
+from tokendiet import subtract, llm_backend
 r = subtract(question, context, backend=llm_backend(my_model))
 r.text          # minimal sufficient context
 r.distractors   # the misleading sentences it removed

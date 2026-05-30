@@ -2,7 +2,7 @@
 
     python examples/quickstart.py
 """
-from subtraction import subtract
+from tokendiet import subtract
 
 context = """Global Travel & Expense Policy
 
@@ -19,7 +19,7 @@ print("STATS:", res.stats)
 
 # Answer-impact backend — bring your own model (wins on the hard cases):
 #
-#     from subtraction import llm_backend
+#     from tokendiet import llm_backend
 #
 #     def my_llm(prompt: str) -> str:
 #         ...  # call OpenAI / a local model / anything; return the text

@@ -3,14 +3,14 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "subtraction"
+name = "tokendiet"
 version = "0.1.0"
 description = "Keep only the context your task actually needs — extractive, query-aware context compression."
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
 authors = [{ name = "pornlsy2004-ux" }]
-keywords = ["llm", "context", "compression", "rag", "prompt", "tokens", "subtraction"]
+keywords = ["llm", "tokens", "token-reduction", "context", "context-engineering", "compression", "prompt", "rag", "subtraction"]
 classifiers = [
   "License :: OSI Approved :: MIT License",
   "Programming Language :: Python :: 3",
@@ -23,8 +23,8 @@ tokens = ["tiktoken>=0.5"]
 dev = ["pytest>=7"]
 
 [project.urls]
-Homepage = "https://github.com/pornlsy2004-ux/subtraction"
-Repository = "https://github.com/pornlsy2004-ux/subtraction"
+Homepage = "https://github.com/pornlsy2004-ux/tokendiet"
+Repository = "https://github.com/pornlsy2004-ux/tokendiet"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/subtraction"]
+packages = ["src/tokendiet"]

@@ -1,4 +1,4 @@
-"""Subtraction — keep only the context your task actually needs."""
+"""tokendiet — keep only the context your task actually needs."""
 from .core import (
     SubtractionResult,
     count_tokens,

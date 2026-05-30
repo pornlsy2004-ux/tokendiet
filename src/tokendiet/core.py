@@ -1,4 +1,4 @@
-"""Subtraction — keep only the context your task actually needs.
+"""tokendiet — keep only the context your task actually needs.
 
 Extractive, query-aware context compression. Instead of *compressing* (rewriting
 text into a denser form), it *subtracts*: it selects the smallest set of original
