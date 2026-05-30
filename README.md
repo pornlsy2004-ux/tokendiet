@@ -4,6 +4,8 @@
 
 ### Same answer. A fraction of the tokens.
 
+<img src="assets/demo.gif" alt="Subtraction demo — keep the relevant slice verbatim, drop the rest, same answer at a fraction of the tokens" width="840">
+
 <img src="assets/subtraction-result.svg" alt="Raw, compressed, and subtracted contexts score the same accuracy; subtraction uses ~1/8 the tokens" width="840">
 
 The reflex is to cram everything into the context window — and when it won't fit, to
