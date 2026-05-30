@@ -1,69 +1,74 @@
 """
-Run the Subtraction self-test against any model via API, and score it.
+Reproduce the Subtraction controlled test: does compressing context change accuracy?
 
   pip install anthropic        # or: pip install openai
-  export ANTHROPIC_API_KEY=... # or: export OPENAI_API_KEY=...
-  python gen.py                # build haystacks + manifest.json first
+  export ANTHROPIC_API_KEY=...  # or: export OPENAI_API_KEY=...
   python run.py
 
-The haystack is INLINED into the prompt (nothing to grep — this is the rigorous version).
-Two questions per haystack: retrieve one code, and count the even codes.
+For each item in items.json, three conditions answer the SAME question:
+  raw         - the full document
+  compressed  - the document compressed by the model (told to preserve key info)
+  subtracted  - only the one relevant sentence
+Scoring is crude (key-token match); eyeball the printed MISSes. Raw run: results/controlled.json.
 """
 import json, os, re, sys
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-MANIFEST = os.path.join(ROOT, "manifest.json")
-OUT = os.path.join(ROOT, "results", "run.json")
 
-def call_model(prompt):
+def call(prompt, max_tokens=400):
     if os.environ.get("ANTHROPIC_API_KEY"):
         import anthropic
-        model = os.environ.get("SUBTRACTION_MODEL", "claude-haiku-4-5-20251001")
-        msg = anthropic.Anthropic().messages.create(
-            model=model, max_tokens=64,
+        model = os.environ.get("SUBTRACTION_MODEL", "claude-opus-4-8")
+        m = anthropic.Anthropic().messages.create(
+            model=model, max_tokens=max_tokens,
             messages=[{"role": "user", "content": prompt}])
-        return msg.content[0].text.strip()
+        return m.content[0].text.strip()
     if os.environ.get("OPENAI_API_KEY"):
         import openai
-        model = os.environ.get("SUBTRACTION_MODEL", "gpt-4.1-mini")
-        msg = openai.OpenAI().chat.completions.create(
-            model=model, max_tokens=64,
+        model = os.environ.get("SUBTRACTION_MODEL", "gpt-4.1")
+        m = openai.OpenAI().chat.completions.create(
+            model=model, max_tokens=max_tokens,
             messages=[{"role": "user", "content": prompt}])
-        return msg.choices[0].message.content.strip()
+        return m.choices[0].message.content.strip()
     sys.exit("Set ANTHROPIC_API_KEY or OPENAI_API_KEY first.")
 
+def compress(doc):
+    return call("Compress the document below to roughly 30% of its length for an LLM's context "
+                "window. Preserve all important information. Output ONLY the compressed text.\n\n"
+                "DOCUMENT:\n" + doc, 400)
+
+def answer(context, question):
+    return call("Using ONLY the text below, answer the question. Reply with ONLY the specific value "
+                "or short phrase. If the text does not contain it, reply UNKNOWN.\n\nTEXT:\n"
+                + context + "\n\nQUESTION: " + question, 60)
+
+def is_correct(resp, gold):
+    norm = lambda s: re.sub(r"[^a-z0-9$%]", "", s.lower())
+    key = norm(gold.split("(")[0].split("/")[0])[:6]
+    return bool(key) and key in norm(resp)
+
+def toks(s):
+    return max(1, round(len(s) / 4))
+
 def main():
-    if not os.path.exists(MANIFEST):
-        sys.exit("Run `python gen.py` first.")
-    trials = json.load(open(MANIFEST, encoding="utf-8"))
-    rows, sizes = [], {}
-    for t in trials:
-        hay = open(t["path"], encoding="utf-8").read()
-        r_ans = call_model(hay + "\nEach line above gives a vault access code. "
-                                  "Reply with ONLY the 4-digit code for %s." % t["target"])
-        c_ans = call_model(hay + "\nEach line above gives a 4-digit vault access code. "
-                                  "Reply with ONLY the integer count of how many are EVEN "
-                                  "(last digit 0, 2, 4, 6, or 8).")
-        r_hit = re.search(r"\d{4}", r_ans)
-        retrieval_ok = bool(r_hit and r_hit.group() == t["answer"])
-        c_hit = re.search(r"\d+", c_ans)
-        count_err = abs(int(c_hit.group()) - t["true_even"]) if c_hit else None
-        within1 = count_err is not None and count_err <= 1
-        rows.append({"id": t["id"], "n": t["n_lines"], "retrieval_ok": retrieval_ok,
-                     "count_answer": c_hit.group() if c_hit else None,
-                     "true_even": t["true_even"], "count_err": count_err, "within1": within1})
-        s = sizes.setdefault(t["n_lines"], {"r": 0, "w": 0, "k": 0})
-        s["r"] += retrieval_ok; s["w"] += within1; s["k"] += 1
-        print("%-8s retrieval=%s  count_err=%s" % (t["id"], retrieval_ok, count_err))
-
-    print("\nsize   retrieval   counting(±1)")
-    for n in sorted(sizes):
-        s = sizes[n]
-        print("%-5d  %3.0f%%        %3.0f%%" % (n, 100*s["r"]/s["k"], 100*s["w"]/s["k"]))
-
-    os.makedirs(os.path.dirname(OUT), exist_ok=True)
-    json.dump(rows, open(OUT, "w", encoding="utf-8"), indent=2)
-    print("\nwrote", OUT)
+    data = json.load(open(os.path.join(ROOT, "items.json"), encoding="utf-8"))
+    docs, items = data["docs"], data["items"]
+    comp_cache, agg = {}, {c: [0, 0] for c in ("raw", "compressed", "subtracted")}
+    for it in items:
+        doc = docs[it["doc"]]
+        comp_cache.setdefault(it["doc"], compress(doc))
+        ctx = {"raw": doc, "compressed": comp_cache[it["doc"]], "subtracted": it["relevant"]}
+        marks = []
+        for cond in ("raw", "compressed", "subtracted"):
+            ok = is_correct(answer(ctx[cond], it["question"]), it["answer"])
+            agg[cond][0] += ok
+            agg[cond][1] += toks(ctx[cond])
+            marks.append("%s:%s" % (cond[:3], "ok" if ok else "MISS"))
+        print("%-4s %s" % (it["id"], "  ".join(marks)))
+    n = len(items)
+    print("\ncondition     accuracy   avg context tokens")
+    for cond in ("raw", "compressed", "subtracted"):
+        print("%-12s  %3.0f%%       %d" % (cond, 100 * agg[cond][0] / n, agg[cond][1] / n))
 
 if __name__ == "__main__":
     main()

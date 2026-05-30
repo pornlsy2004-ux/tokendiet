@@ -1,58 +1,55 @@
 # X / Twitter thread
 
-> Post the chart (assets/context-rot.svg, exported to PNG) on tweet 1 — image-first.
-> One clean claim per tweet. Quote-tweet a compression repo to start a (civil) fight.
+> Post the result chart (assets/subtraction-result.svg → PNG) on tweet 1. Lead with the
+> honesty; the "I was wrong" hook outperforms a bold claim here.
 
 **1/**
-Everyone's racing to compress LLM context to save tokens.
+I tried to prove that compressing an LLM's context destroys the details your task needs.
 
-They're optimizing the wrong variable.
+I built the benchmark to show it.
 
-You can't compress your way out of context rot. 🧵
-[attach: context-rot chart]
+The benchmark proved me wrong. 🧵
+[attach: result chart]
 
 **2/**
-The bottleneck was never token *count*. It's that models get less reliable as input grows —
-no matter how few tokens you've squeezed it into.
+Setup: same question, same model (Opus), 3 context treatments —
+• full document
+• Opus compression (~30–50%, told to keep key info)
+• just the 1 relevant sentence
 
-More-but-smaller is still more.
+13 questions, each answer a buried exception/override/negation.
 
 **3/**
-Receipt #1 — Chroma tested 18 frontier models (GPT-4.1, Claude 4, Gemini 2.5, Qwen3).
+Result: all three scored the SAME accuracy (85%).
 
-Every single one degrades as context grows. They don't use context uniformly.
+Compression didn't hurt. It kept the details. A clean null result.
+
+I was ready to publish "you can't compress your way out." Good thing I ran it first.
 
 **4/**
-Receipt #2 (this is the one that killed my own compressor):
+What actually moved: the token bill.
 
-Accuracy drops 13.9–85% as input grows EVEN WITH PERFECT RETRIEVAL — even with every
-irrelevant token masked out. (Du et al., EMNLP 2025)
+Subtraction — just the relevant sentence — matched full-document accuracy at ~1/8 the tokens.
 
-It's the length itself.
+Not magic. Just: most of your context is dead weight.
 
 **5/**
-Receipt #3 — "Lost in the Middle" (TACL 2024): models attend to the start and end of
-context and go blind in the middle.
+The reason to care is scale. Peer-reviewed work (Du et al. EMNLP 2025; Chroma; Lost-in-the-Middle):
+long context gets LESS reliable as it grows — even with perfect retrieval, 13.9–85% drops.
 
-Compression that shoves your key fact into the middle makes it worse.
+A shorter-but-still-huge context still rots. You subtract.
 
 **6/**
-If zeroing out irrelevant tokens doesn't save you, losslessly compressing the relevant
-ones won't either.
+And subtraction has a catch I won't hide: it assumes you can FIND the relevant slice.
 
-And lossy "semantic" compression eats your negations and conditionals — the bits that
-flip the answer.
+Cut too far and you drop a bridge the question needs (my benchmark caught this twice).
+
+The scalable fix: let the model fetch what it needs in code.
 
 **7/**
-The fix isn't smaller context. It's less context.
+Repo = the field guide + the benchmark that killed my own headline (including its failures).
 
-→ Subtract: justify what you include, not what you cut.
-→ Think in code: let the agent fetch what it needs at runtime, so it never enters the window.
+Same answer. A fraction of the tokens.
 
-**8/**
-I wrote it all up — the thesis, the receipts, the patterns — as a field guide.
-
-Stop compressing. Start subtracting.
-
-⭐ if it reframed how you think about context:
+⭐ if you'll go delete some context:
 https://github.com/OWNER/REPO

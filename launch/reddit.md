@@ -1,54 +1,50 @@
 # Reddit launch copy
 
-> Reddit punishes self-promo. Lead with substance, link last, never use marketing voice.
-> Best subs: r/LocalLLaMA (practitioners), r/MachineLearning (use [D] discussion flair).
-> Reply with the receipts; let the thesis carry it.
+> Reddit rewards substance and honesty, punishes marketing. Lead with the null result and the
+> method; link last. Best subs: r/LocalLLaMA, r/MachineLearning ([D] flair).
 
 ---
 
 ## r/LocalLLaMA
 
-**Title:** You can't compress your way out of context rot — subtract instead
+**Title:** I tried to prove context compression hurts accuracy. Controlled test says it doesn't.
 
-I went down a rabbit hole building a prompt/context compressor and came out the other side
-convinced compression is the wrong fix. Sharing the reasoning, curious what people running
-big local contexts think.
+I went in convinced that compressing an LLM's context (to save tokens) throws away the specific
+details a task depends on. Built a small controlled test to demonstrate it — and it came back null.
 
-The core problem isn't token count — it's that models degrade as input grows, period:
+Setup: same question, same model (Opus), three context treatments — full document, an Opus
+compression (~30–50%, told to preserve key info), and just the one relevant sentence. 13 questions,
+each answer a buried exception/override/negation. Blind, exact-match.
 
-- Chroma tested 18 frontier models; all get less reliable as context grows.
-- EMNLP 2025 (Du et al.): 13.9–85% accuracy drop as input grows *even with perfect retrieval*,
-  even with irrelevant tokens masked. It's the length itself, not noise.
-- "Lost in the Middle" (TACL 2024): the middle of long context is a dead zone.
+- Raw: 85%
+- Compressed: 85%
+- Subtracted: 85%
 
-So shrinking a long context into a shorter-but-still-long one doesn't escape rot, and lossy
-compression tends to eat the exact tokens that matter (negations, conditionals, specific numbers).
+Compression neither helped nor hurt — the careful summary kept the details. The only thing that
+changed was tokens: subtraction matched full-document accuracy at ~1/8 the tokens (median 28 vs 218).
 
-The alternative I landed on: **subtract** (put less in front of the model) and **think in code**
-(let the agent fetch what it needs at runtime so the bulk never enters the window).
+The takeaway I landed on: compression isn't the lever, *inclusion* is — and the reason that matters is
+scale (long context degrades, per Du et al. EMNLP 2025 / Chroma / Lost-in-the-Middle). Writeup + the
+reproducible harness (including where subtraction itself failed) here: https://github.com/OWNER/REPO
 
-Writeup + sources + counterargument slots here: https://github.com/OWNER/REPO
-
-Genuinely want counterexamples — if your 200K-context setup works great, tell me why.
+Genuinely want someone to push the docs long enough that compression finally bites — the harness takes
+your own docs.
 
 ---
 
-## r/MachineLearning  ·  flair: [D]
+## r/MachineLearning · flair: [D]
 
-**Title:** [D] Compression vs. subtraction for long-context degradation — is "fit more in" the wrong framing?
+**Title:** [D] Controlled test: context compression was a no-op for accuracy; the lever was inclusion, not packing
 
-A lot of recent tooling targets prompt/context *compression* to mitigate cost and long-context
-issues. But the degradation literature suggests the problem is input length itself, not just
-the presence of irrelevant tokens:
+I ran a small controlled comparison (N=13, Opus, blind exact-match) of three context treatments for a
+QA task where each answer is a low-salience detail (exception/override/negation): full document vs.
+model-compressed (~30–50%, preserve-info instruction) vs. the single relevant sentence.
 
-- Du et al. (Findings of EMNLP 2025) report 13.9–85% degradation with input length **despite
-  perfect retrieval**, holding even when irrelevant tokens are masked.
-- Chroma's "Context Rot" report: non-uniform context use across 18 models.
-- Liu et al. (TACL 2024): positional U-shape.
+Accuracy was identical across all three (85%); only token count differed (median 218 / 108 / 28). So at
+least in this short-document regime, lossy-but-careful compression preserved task-relevant detail, and
+the gains attributed to "compression" are really just token reduction — which subtraction achieves more
+cheaply, *if* you can identify the relevant unit.
 
-If that holds, lossless compression of *relevant* context shouldn't recover much, and lossy
-compression risks removing low-frequency, high-importance tokens. The framing I'm proposing is
-"subtraction + runtime code-based retrieval" over "compression." Curious where this is wrong —
-especially results showing compression recovering long-context accuracy rather than just cost.
-
-Sources + writeup: https://github.com/OWNER/REPO
+I'm framing the actual motivation as the long-context degradation literature (Du et al. 2025; Chroma
+context rot; Liu et al. 2024). Curious about results where careful compression *recovers* long-context
+accuracy vs. raw, rather than just reducing cost. Harness + data: https://github.com/OWNER/REPO

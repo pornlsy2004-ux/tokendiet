@@ -1,24 +1,35 @@
 # Objections, Answered
 
-The honest version. If you came to dunk, start here — odds are it's already addressed.
+The honest version. We changed our own mind once already (see the last entry) — so come at it.
 
-### "This is obvious / everyone knows context rot."
-The *phenomenon* is documented. The *practice* contradicts it daily. An entire genre of tooling exists to help you stuff more into the window, and "just add more context" is still the default reflex. Naming the law, sourcing it, and prescribing *subtract, don't compress* is the contribution — not discovering rot.
+### "So compression is useless?"
+No — it's a **no-op for accuracy**, not a negative. In our controlled test it neither helped nor
+hurt; it just made the context shorter. That's fine. The point is narrower than we first thought:
+compression isn't the *lever*. It can't beat subtraction on tokens, and it can't undo the rot that a
+still-large context causes at scale. Compress if you like — just don't expect it to make the model smarter.
 
-### "So compression is useless? That's a strawman."
-No, and we say so in the README. If compression makes you put **genuinely less** in front of the model, it *is* subtraction — we're allies. The target is compression-as-**cramming**: shrinking a payload specifically so you can keep over-stuffing the window. LLMLingua-style work is good engineering pointed at the wrong goal.
+### "Isn't 'just send the relevant part' obvious?"
+The principle is. The practice is the opposite — we dump everything in and then compress to fit more.
+And there's a real catch we don't hand-wave: **subtraction assumes you can find the relevant slice.**
+If you can't, you're back to retrieval — which is exactly why think-in-code (let the model fetch what
+it needs at runtime) is the scalable form of subtraction.
 
-### "Compression reduces length, and rot is about length — so compression should help."
-Sometimes, at the margin. But (1) Du et al. show degradation **even with perfect retrieval and irrelevant tokens masked** — so a still-long context of *relevant* tokens rots anyway; (2) lossy semantic compression destroys exactly the fragile bits — negations, conditionals, the one figure that flips the answer; (3) the compression *mindset* encourages keeping everything "just smaller," when the win is in not including it at all.
+### "N=13 is tiny / you wrote the questions."
+Correct on both, and we say so in the [benchmark](../benchmark). It's a demonstration you can re-run on
+your own docs, not a leaderboard. The claim the repo actually rests on — that *long* context degrades —
+is peer-reviewed and large-scale; see the [receipts](receipts.md).
 
-### "Isn't this just RAG with extra steps?"
-RAG is one way to subtract — good. But pre-fetched chunks stuffed back into the prompt rot like anything else. Think-in-code is stronger: the model pulls what it needs, when it needs it, in the execution environment, and only the result returns. Subtraction at runtime, not at index time.
+### "Did you just pick a weak compressor to make it fail?"
+The opposite — and it's why the result is a *null*, not a win. We compressed with a frontier model
+(Opus) told to preserve all important information, at ~30–50%. It kept the details and accuracy didn't
+move. Push the documents longer and the compression more aggressive and it will eventually bite; the
+harness lets you find that line.
 
-### "Where's *your* benchmark? Why should I trust a README?"
-Because it doesn't ask you to. It stands on peer-reviewed, reproducible work (see [receipts](receipts.md)); the Chroma toolkit runs against your own models. We deliberately don't grade our own homework — that's the dunk-shield, not a gap.
+### "Isn't this just RAG?"
+RAG is one way to subtract — good. Think-in-code is a stronger one: the model pulls what it needs, when
+it needs it, in the execution environment, so the bulk never enters the window. Subtraction at runtime.
 
-### "This is just a manifesto with no code."
-Correct, by design — it's a field guide, not a framework. The thesis is the product. If you want runnable subtraction, the think-in-code section points at the real primary sources.
-
-### "Counterexample: my huge-context setup works great."
-Great — open a PR with the setup and numbers. The thesis is falsifiable on purpose. Real counterexamples make this stronger; we want them.
+### "You changed your thesis halfway through."
+Yes. We started believing compression actively destroys the details you need. Our own benchmark
+falsified that. We kept the result and dropped the headline — which is the whole spirit of the repo:
+if a claim can't survive its own test, it shouldn't be in your prompt either.

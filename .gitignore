@@ -15,6 +15,9 @@ Thumbs.db
 _internal/
 docs/superpowers/
 
-# Benchmark scratch (generated locally by gen.py / run.py)
+# Benchmark scratch (generated locally by run.py)
 benchmark/hay/
 benchmark/results/run.json
+
+# Unrelated local project that shares this folder — not part of Subtraction
+my-video/

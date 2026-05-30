@@ -1,0 +1,155 @@
+{
+  "summary": {
+    "model_under_test": "Claude Opus 4.8",
+    "compressor": "Claude Opus 4.8 (told to preserve all important info)",
+    "n_questions": 13,
+    "accuracy": {
+      "raw": 0.846,
+      "compressed": 0.846,
+      "subtracted": 0.846
+    },
+    "mean_context_tokens": {
+      "raw": 243,
+      "compressed": 111,
+      "subtracted": 26
+    },
+    "median_context_tokens": {
+      "raw": 218,
+      "compressed": 108,
+      "subtracted": 28
+    },
+    "finding": "All three conditions scored the same accuracy. Compression neither helped nor hurt vs raw; subtraction matched raw accuracy at a fraction of the tokens. The lever is how much you include, not how you pack it."
+  },
+  "per_question": [
+    {
+      "id": "A",
+      "doc": "travel",
+      "raw_tokens": 342,
+      "compressed_tokens": 158,
+      "subtracted_tokens": 30,
+      "raw_correct": 1,
+      "compressed_correct": 1,
+      "subtracted_correct": 1
+    },
+    {
+      "id": "B",
+      "doc": "api",
+      "raw_tokens": 285,
+      "compressed_tokens": 117,
+      "subtracted_tokens": 37,
+      "raw_correct": 1,
+      "compressed_correct": 0,
+      "subtracted_correct": 1
+    },
+    {
+      "id": "C",
+      "doc": "meeting",
+      "raw_tokens": 218,
+      "compressed_tokens": 109,
+      "subtracted_tokens": 33,
+      "raw_correct": 1,
+      "compressed_correct": 1,
+      "subtracted_correct": 1
+    },
+    {
+      "id": "D",
+      "doc": "warranty",
+      "raw_tokens": 264,
+      "compressed_tokens": 108,
+      "subtracted_tokens": 32,
+      "raw_correct": 1,
+      "compressed_correct": 1,
+      "subtracted_correct": 1
+    },
+    {
+      "id": "E1",
+      "doc": "insurance",
+      "raw_tokens": 251,
+      "compressed_tokens": 104,
+      "subtracted_tokens": 21,
+      "raw_correct": 1,
+      "compressed_correct": 1,
+      "subtracted_correct": 1
+    },
+    {
+      "id": "E2",
+      "doc": "insurance",
+      "raw_tokens": 251,
+      "compressed_tokens": 104,
+      "subtracted_tokens": 38,
+      "raw_correct": 1,
+      "compressed_correct": 1,
+      "subtracted_correct": 1
+    },
+    {
+      "id": "E3",
+      "doc": "insurance",
+      "raw_tokens": 251,
+      "compressed_tokens": 104,
+      "subtracted_tokens": 24,
+      "raw_correct": 0,
+      "compressed_correct": 0,
+      "subtracted_correct": 1
+    },
+    {
+      "id": "F1",
+      "doc": "saas",
+      "raw_tokens": 214,
+      "compressed_tokens": 100,
+      "subtracted_tokens": 12,
+      "raw_correct": 0,
+      "compressed_correct": 1,
+      "subtracted_correct": 0
+    },
+    {
+      "id": "F2",
+      "doc": "saas",
+      "raw_tokens": 214,
+      "compressed_tokens": 100,
+      "subtracted_tokens": 16,
+      "raw_correct": 1,
+      "compressed_correct": 1,
+      "subtracted_correct": 1
+    },
+    {
+      "id": "F3",
+      "doc": "saas",
+      "raw_tokens": 214,
+      "compressed_tokens": 100,
+      "subtracted_tokens": 28,
+      "raw_correct": 1,
+      "compressed_correct": 1,
+      "subtracted_correct": 1
+    },
+    {
+      "id": "G1",
+      "doc": "event",
+      "raw_tokens": 218,
+      "compressed_tokens": 114,
+      "subtracted_tokens": 14,
+      "raw_correct": 1,
+      "compressed_correct": 1,
+      "subtracted_correct": 1
+    },
+    {
+      "id": "G2",
+      "doc": "event",
+      "raw_tokens": 218,
+      "compressed_tokens": 114,
+      "subtracted_tokens": 28,
+      "raw_correct": 1,
+      "compressed_correct": 1,
+      "subtracted_correct": 0
+    },
+    {
+      "id": "G3",
+      "doc": "event",
+      "raw_tokens": 218,
+      "compressed_tokens": 114,
+      "subtracted_tokens": 29,
+      "raw_correct": 1,
+      "compressed_correct": 1,
+      "subtracted_correct": 1
+    }
+  ]
+}

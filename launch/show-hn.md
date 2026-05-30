@@ -1,33 +1,34 @@
 # Show HN launch copy
 
-> Post on a US weekday morning (Tue–Thu, ~8–10am ET). Reply to your own thread within
-> the first 30 min with the strongest receipt. Engage every comment for the first 2 hours —
-> early velocity is what trips GitHub Trending.
+> Post on a US weekday morning (Tue–Thu, ~8–10am ET). The honest "we falsified our own
+> hypothesis" angle plays well on HN — lead with it, don't oversell.
 
-## Title (pick one — keep it plain, HN hates hype)
+## Title (pick one — plain, no hype)
 
-- `Show HN: Subtraction – stop compressing your LLM context, start subtracting it`
-- `Show HN: You can't compress your way out of context rot`
+- `Show HN: We tried to prove LLM context compression hurts accuracy. It doesn't.`
+- `Show HN: Subtraction – same answer at 1/8 the tokens (and a null result on compression)`
 
 ## Body
 
-I spent a couple of weeks building a context compressor. Token diet, semantic
-minimization, the works — the goal was to cram big inputs into the window without
-"losing meaning."
+I set out to show that compressing an LLM's context throws away the details your task depends on —
+the "you can't compress your way out of context rot" argument. I built a controlled test to prove it.
 
-Then I actually read the recent research, and it kind of broke my project.
+It didn't prove it. It falsified it.
 
-Du et al. (Findings of EMNLP 2025) show LLM accuracy drops 13.9–85% as input grows
-*even with perfect retrieval* — even when every irrelevant token is masked out. Chroma
-tested 18 frontier models and they all degrade as context grows. It's not noise you can
-squeeze away; it's length itself. So compressing a long context into a shorter-but-still-long
-one doesn't fix the rot — and lossy compression quietly eats your negations and conditionals.
+Same question, same model (Opus), three context treatments: the full document, an Opus compression
+(~30–50%, told to preserve key info), and just the one relevant sentence. 13 questions, each answer a
+buried exception/override/negation. Result: all three scored the same accuracy (85%). Compression
+neither helped nor hurt — it kept the details.
 
-So I deleted the compressor and wrote up the opposite approach: subtract (put less in front
-of the model) and "think in code" (let the agent fetch what it needs at runtime so it never
-hits the window). It's a field guide + the receipts, not a framework.
+The thing that actually moved was the token bill. Subtraction — just the relevant sentence — matched
+full-document accuracy at about 1/8 the tokens. And the reason to care about that is scale: the
+peer-reviewed work (Du et al. EMNLP 2025; Chroma; "Lost in the Middle") shows long contexts get
+*less* reliable as they grow, even with perfect retrieval. You don't compress out of that. You include
+less.
 
-Curious where this breaks. If you've got a big-context setup that genuinely works, I'd love
-a counterexample — there's a PR slot for exactly that.
+So the repo is a field guide for that, plus the benchmark that killed my original headline — including
+the cases where subtraction itself failed (cut too far and you lose a bridge the question needs). It's
+N=13 and reproducible; I'd genuinely like someone to push the docs long enough that compression finally
+bites.
 
-Link: https://github.com/OWNER/REPO
+Repo: https://github.com/OWNER/REPO
