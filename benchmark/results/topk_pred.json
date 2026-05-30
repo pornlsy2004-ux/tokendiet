@@ -1,0 +1,54 @@
+[
+  {
+    "id": "A",
+    "answer": "The maximum reimbursable nightly hotel rate for Tokyo is $340."
+  },
+  {
+    "id": "B",
+    "answer": "The requests-per-minute limit for the Enterprise tier on the /export endpoint is 30 requests/minute."
+  },
+  {
+    "id": "C",
+    "answer": "No, the v2 launch was NOT approved for Q3."
+  },
+  {
+    "id": "D",
+    "answer": "Not stated in the provided context. The context mentions warranty coverage for the frame and that approved repairs are free, but does not specify battery warranty coverage."
+  },
+  {
+    "id": "E1",
+    "answer": "The deductible for water damage is $2,500 per occurrence."
+  },
+  {
+    "id": "E2",
+    "answer": "No, flood damage is not covered under this policy; it is explicitly excluded."
+  },
+  {
+    "id": "E3",
+    "answer": "A theft claim must be filed with HomeShield within 30 days."
+  },
+  {
+    "id": "F1",
+    "answer": "The Free plan is best-effort with no uptime SLA."
+  },
+  {
+    "id": "F2",
+    "answer": "The maximum number of seats on the Team plan is 25 seats."
+  },
+  {
+    "id": "F3",
+    "answer": "For customers in the EU, data is retained for 30 days after cancellation."
+  },
+  {
+    "id": "G1",
+    "answer": "No, workshop fees are non-refundable once purchased."
+  },
+  {
+    "id": "G2",
+    "answer": "Not stated in the provided context. The context states that a conference pass may be transferred up to 7 days before the event, but does not specify how many times it can be transferred."
+  },
+  {
+    "id": "G3",
+    "answer": "No, attendees are not allowed to record talks."
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "raw_tokens": 300059,
+  "coarse_bm25_tokens": 2565,
+  "subtracted_tokens": 319,
+  "answer": "QX-7793-ZD",
+  "correct": true,
+  "compression_x": 940,
+  "subtracted_pct_of_raw": 0.106
+}

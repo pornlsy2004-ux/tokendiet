@@ -1,0 +1,54 @@
+[
+  {
+    "id": "A",
+    "gold": "$340"
+  },
+  {
+    "id": "B",
+    "gold": "30"
+  },
+  {
+    "id": "C",
+    "gold": "No (deferred, conditional on the accessibility audit by Sept 5)"
+  },
+  {
+    "id": "D",
+    "gold": "12 months"
+  },
+  {
+    "id": "E1",
+    "gold": "$2,500"
+  },
+  {
+    "id": "E2",
+    "gold": "No (excluded; only via separate rider)"
+  },
+  {
+    "id": "E3",
+    "gold": "30"
+  },
+  {
+    "id": "F1",
+    "gold": "None / best-effort"
+  },
+  {
+    "id": "F2",
+    "gold": "25"
+  },
+  {
+    "id": "F3",
+    "gold": "30"
+  },
+  {
+    "id": "G1",
+    "gold": "No"
+  },
+  {
+    "id": "G2",
+    "gold": "Once"
+  },
+  {
+    "id": "G3",
+    "gold": "No (keynotes are the exception)"
+  }
+]

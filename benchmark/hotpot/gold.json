@@ -1,0 +1,651 @@
+[
+ {
+  "id": "0",
+  "answer": "yes",
+  "gold_idx": [
+   1,
+   4
+  ],
+  "bm25_top3": [
+   0,
+   2,
+   9
+  ]
+ },
+ {
+  "id": "1",
+  "answer": "Chief of Protocol",
+  "gold_idx": [
+   1,
+   6
+  ],
+  "bm25_top3": [
+   5,
+   6,
+   7
+  ]
+ },
+ {
+  "id": "2",
+  "answer": "Animorphs",
+  "gold_idx": [
+   2,
+   8
+  ],
+  "bm25_top3": [
+   7,
+   8,
+   9
+  ]
+ },
+ {
+  "id": "3",
+  "answer": "no",
+  "gold_idx": [
+   5,
+   6
+  ],
+  "bm25_top3": [
+   4,
+   5,
+   6
+  ]
+ },
+ {
+  "id": "4",
+  "answer": "Greenwich Village, New York City",
+  "gold_idx": [
+   3,
+   9
+  ],
+  "bm25_top3": [
+   1,
+   3,
+   9
+  ]
+ },
+ {
+  "id": "5",
+  "answer": "YG Entertainment",
+  "gold_idx": [
+   2,
+   4
+  ],
+  "bm25_top3": [
+   2,
+   4,
+   5
+  ]
+ },
+ {
+  "id": "6",
+  "answer": "Eenasul Fateh",
+  "gold_idx": [
+   3,
+   7
+  ],
+  "bm25_top3": [
+   3,
+   7,
+   8
+  ]
+ },
+ {
+  "id": "7",
+  "answer": "3,677 seated",
+  "gold_idx": [
+   5,
+   7
+  ],
+  "bm25_top3": [
+   0,
+   3,
+   8
+  ]
+ },
+ {
+  "id": "8",
+  "answer": "Terry Richardson",
+  "gold_idx": [
+   0,
+   2
+  ],
+  "bm25_top3": [
+   0,
+   4,
+   9
+  ]
+ },
+ {
+  "id": "9",
+  "answer": "yes",
+  "gold_idx": [
+   4,
+   6
+  ],
+  "bm25_top3": [
+   3,
+   6,
+   8
+  ]
+ },
+ {
+  "id": "10",
+  "answer": "Kansas Song",
+  "gold_idx": [
+   4,
+   9
+  ],
+  "bm25_top3": [
+   4,
+   7,
+   9
+  ]
+ },
+ {
+  "id": "11",
+  "answer": "David Weissman",
+  "gold_idx": [
+   3,
+   9
+  ],
+  "bm25_top3": [
+   3,
+   4,
+   9
+  ]
+ },
+ {
+  "id": "12",
+  "answer": "1999",
+  "gold_idx": [
+   7,
+   8
+  ],
+  "bm25_top3": [
+   7,
+   8,
+   9
+  ]
+ },
+ {
+  "id": "13",
+  "answer": "no",
+  "gold_idx": [
+   3,
+   4
+  ],
+  "bm25_top3": [
+   4,
+   7,
+   8
+  ]
+ },
+ {
+  "id": "14",
+  "answer": "from 1986 to 2013",
+  "gold_idx": [
+   5,
+   9
+  ],
+  "bm25_top3": [
+   0,
+   3,
+   9
+  ]
+ },
+ {
+  "id": "15",
+  "answer": "9,984",
+  "gold_idx": [
+   2,
+   9
+  ],
+  "bm25_top3": [
+   1,
+   2,
+   9
+  ]
+ },
+ {
+  "id": "16",
+  "answer": "the North Atlantic Conference",
+  "gold_idx": [
+   3,
+   4
+  ],
+  "bm25_top3": [
+   3,
+   4,
+   5
+  ]
+ },
+ {
+  "id": "17",
+  "answer": "yes",
+  "gold_idx": [
+   3,
+   5
+  ],
+  "bm25_top3": [
+   5,
+   6,
+   8
+  ]
+ },
+ {
+  "id": "18",
+  "answer": "1969 until 1974",
+  "gold_idx": [
+   2,
+   8
+  ],
+  "bm25_top3": [
+   1,
+   3,
+   8
+  ]
+ },
+ {
+  "id": "19",
+  "answer": "Robert Erskine Childers DSC",
+  "gold_idx": [
+   1,
+   6
+  ],
+  "bm25_top3": [
+   1,
+   4,
+   8
+  ]
+ },
+ {
+  "id": "20",
+  "answer": "Pedro Rodríguez",
+  "gold_idx": [
+   3,
+   8
+  ],
+  "bm25_top3": [
+   3,
+   6,
+   8
+  ]
+ },
+ {
+  "id": "21",
+  "answer": "Sonic",
+  "gold_idx": [
+   5,
+   8
+  ],
+  "bm25_top3": [
+   3,
+   5,
+   8
+  ]
+ },
+ {
+  "id": "22",
+  "answer": "keyboard function keys",
+  "gold_idx": [
+   2,
+   5
+  ],
+  "bm25_top3": [
+   0,
+   1,
+   2
+  ]
+ },
+ {
+  "id": "23",
+  "answer": "Badly Drawn Boy",
+  "gold_idx": [
+   0,
+   6
+  ],
+  "bm25_top3": [
+   0,
+   1,
+   9
+  ]
+ },
+ {
+  "id": "24",
+  "answer": "World's Best Goalkeeper",
+  "gold_idx": [
+   2,
+   8
+  ],
+  "bm25_top3": [
+   2,
+   3,
+   5
+  ]
+ },
+ {
+  "id": "25",
+  "answer": "Barton Lee Hazlewood",
+  "gold_idx": [
+   7,
+   9
+  ],
+  "bm25_top3": [
+   2,
+   3,
+   6
+  ]
+ },
+ {
+  "id": "26",
+  "answer": "1838",
+  "gold_idx": [
+   3,
+   5
+  ],
+  "bm25_top3": [
+   0,
+   5,
+   6
+  ]
+ },
+ {
+  "id": "27",
+  "answer": "yes",
+  "gold_idx": [
+   0,
+   1
+  ],
+  "bm25_top3": [
+   0,
+   1
+  ]
+ },
+ {
+  "id": "28",
+  "answer": "Henry J. Kaiser",
+  "gold_idx": [
+   5,
+   6
+  ],
+  "bm25_top3": [
+   0,
+   6,
+   9
+  ]
+ },
+ {
+  "id": "29",
+  "answer": "Arena of Khazan",
+  "gold_idx": [
+   1,
+   8
+  ],
+  "bm25_top3": [
+   1,
+   5,
+   8
+  ]
+ },
+ {
+  "id": "30",
+  "answer": "2000",
+  "gold_idx": [
+   5,
+   9
+  ],
+  "bm25_top3": [
+   1,
+   5,
+   9
+  ]
+ },
+ {
+  "id": "31",
+  "answer": "Fujioka, Gunma",
+  "gold_idx": [
+   1,
+   5
+  ],
+  "bm25_top3": [
+   0,
+   1,
+   6
+  ]
+ },
+ {
+  "id": "32",
+  "answer": "Charles Eugène",
+  "gold_idx": [
+   3,
+   9
+  ],
+  "bm25_top3": [
+   0,
+   3,
+   9
+  ]
+ },
+ {
+  "id": "33",
+  "answer": "no",
+  "gold_idx": [
+   7,
+   8
+  ],
+  "bm25_top3": [
+   2,
+   6,
+   7
+  ]
+ },
+ {
+  "id": "34",
+  "answer": "Letters to Cleo",
+  "gold_idx": [
+   0,
+   7
+  ],
+  "bm25_top3": [
+   0,
+   3,
+   9
+  ]
+ },
+ {
+  "id": "35",
+  "answer": "October 1922",
+  "gold_idx": [
+   0,
+   7
+  ],
+  "bm25_top3": [
+   0,
+   2,
+   7
+  ]
+ },
+ {
+  "id": "36",
+  "answer": "2000",
+  "gold_idx": [
+   5,
+   9
+  ],
+  "bm25_top3": [
+   2,
+   5,
+   9
+  ]
+ },
+ {
+  "id": "37",
+  "answer": "World War II",
+  "gold_idx": [
+   0,
+   9
+  ],
+  "bm25_top3": [
+   0,
+   8,
+   9
+  ]
+ },
+ {
+  "id": "38",
+  "answer": "no",
+  "gold_idx": [
+   2,
+   3
+  ],
+  "bm25_top3": [
+   3,
+   4,
+   9
+  ]
+ },
+ {
+  "id": "39",
+  "answer": "New York City",
+  "gold_idx": [
+   7,
+   9
+  ],
+  "bm25_top3": [
+   0,
+   7,
+   9
+  ]
+ },
+ {
+  "id": "40",
+  "answer": "Scotch Collie",
+  "gold_idx": [
+   1,
+   7
+  ],
+  "bm25_top3": [
+   3,
+   7,
+   9
+  ]
+ },
+ {
+  "id": "41",
+  "answer": "Mumbai",
+  "gold_idx": [
+   4,
+   6
+  ],
+  "bm25_top3": [
+   2,
+   4,
+   6
+  ]
+ },
+ {
+  "id": "42",
+  "answer": "1962",
+  "gold_idx": [
+   1,
+   9
+  ],
+  "bm25_top3": [
+   4,
+   8,
+   9
+  ]
+ },
+ {
+  "id": "43",
+  "answer": "sovereignty",
+  "gold_idx": [
+   5,
+   7
+  ],
+  "bm25_top3": [
+   4,
+   5,
+   7
+  ]
+ },
+ {
+  "id": "44",
+  "answer": "Nelson Rockefeller",
+  "gold_idx": [
+   2,
+   8
+  ],
+  "bm25_top3": [
+   1,
+   8,
+   9
+  ]
+ },
+ {
+  "id": "45",
+  "answer": "Yellowcraig",
+  "gold_idx": [
+   5,
+   6
+  ],
+  "bm25_top3": [
+   0,
+   5,
+   6
+  ]
+ },
+ {
+  "id": "46",
+  "answer": "Phil Spector",
+  "gold_idx": [
+   2,
+   8
+  ],
+  "bm25_top3": [
+   2,
+   6,
+   8
+  ]
+ },
+ {
+  "id": "47",
+  "answer": "Organizations could come together to address global issues",
+  "gold_idx": [
+   5,
+   7
+  ],
+  "bm25_top3": [
+   5,
+   7,
+   8
+  ]
+ },
+ {
+  "id": "48",
+  "answer": "yes",
+  "gold_idx": [
+   3,
+   7
+  ],
+  "bm25_top3": [
+   5,
+   7,
+   9
+  ]
+ },
+ {
+  "id": "49",
+  "answer": "English Electric Canberra",
+  "gold_idx": [
+   0,
+   2
+  ],
+  "bm25_top3": [
+   2,
+   4,
+   6
+  ]
+ }
+]

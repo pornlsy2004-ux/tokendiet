@@ -1,0 +1,11 @@
+{
+  "raw_tokens": 300162,
+  "window_limit": 200000,
+  "bm25_top3_tokens": 624,
+  "bm25_answer": "blank / placeholder 00000-00",
+  "bm25_correct": false,
+  "subtraction_tokens": 226,
+  "subtraction_answer": "QX-7793-ZD",
+  "subtraction_correct": true,
+  "gold": "QX-7793-ZD"
+}

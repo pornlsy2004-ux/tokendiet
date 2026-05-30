@@ -80,6 +80,36 @@ A discipline, not a tool:
 4. **Never bank on the middle.** If something must be there, put it at the edges.
 5. **Think in code.** The scalable form of subtraction: instead of *handing* the model data, let it **write code to fetch the exact slice it needs**, so the bulk never enters the window. Anthropic's own guidance moved this way — present servers as code APIs so "intermediate results stay in the execution environment; the agent only sees what is explicitly returned." ([Code execution with MCP](https://www.anthropic.com/engineering/code-execution-with-mcp), 2025).
 
+## The library: `pip install` the discipline
+
+The *principle* is a discipline. But the **selection** step — find the slice the task needs, drop the distractors — can be a tool. So we built one.
+
+```python
+from subtraction import subtract
+
+# Local, zero-dependency baseline (TF-IDF relevance, no API key):
+r = subtract("What is the hotel rate cap for Tokyo?", travel_policy)
+print(r.text)     # the sentences the question needs, verbatim
+print(r.stats)    # {'raw_tokens': 107, 'kept_tokens': 43, 'ratio': 0.402, ...}
+```
+
+For the hard cases, **bring your own model** — it picks the minimal sufficient set and flags distractors (the *answer-impact* mode):
+
+```python
+from subtraction import subtract, llm_backend
+r = subtract(question, context, backend=llm_backend(my_model))
+r.text          # minimal sufficient context
+r.distractors   # the misleading sentences it removed
+```
+
+Kept sentences are **verbatim** — subtraction never rewrites your text, so the result stays quotable and inspectable.
+
+### Does it work? An honest answer — the real benchmark is in progress.
+
+A 13-item **sanity check** (one small model, *our own* questions, *our own* judging) lives in **[/benchmark](benchmark/)**: subtraction matched or beat a keyword baseline on every item and won outright where the answer was buried under distractors. Useful as a smoke test — but N=13 with self-authored questions and self-judging is a **demonstration, not evidence**, and we won't pretend otherwise.
+
+The number to trust is the one we're running now: a real evaluation on **HotpotQA** — hundreds of questions, each deliberately padded with 8 distractor paragraphs, scored with standard answer F1, against a real BM25 baseline. It lands here when it's done.
+
 ## The receipts
 
 Every external claim, sourced with exact figures, is in **[docs/receipts.md](docs/receipts.md)**. Our own run — including its limitations — is in **[/benchmark](benchmark/)**. Found a paper we're missing, or a counterexample? **[Open a PR.](CONTRIBUTING.md)**

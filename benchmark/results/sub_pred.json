@@ -1,0 +1,67 @@
+[
+  {
+    "id": "A",
+    "answer": "For designated high-cost international cities - Tokyo, Zurich, and Singapore - the nightly hotel cap is raised to $340.",
+    "kept_count": 1
+  },
+  {
+    "id": "B",
+    "answer": "The /export endpoint is rate-limited separately to 30 requests/minute on every paid tier, including Enterprise, regardless of the global plan limit.",
+    "kept_count": 1
+  },
+  {
+    "id": "C",
+    "answer": "The v2 launch was NOT approved for Q3.",
+    "kept_count": 1
+  },
+  {
+    "id": "D",
+    "answer": "Batteries, as consumable components, carry a limited 12-month warranty.",
+    "kept_count": 1
+  },
+  {
+    "id": "E1",
+    "answer": "Claims for water damage carry a separate, higher deductible of $2,500 per occurrence.",
+    "kept_count": 1
+  },
+  {
+    "id": "E2",
+    "answer": "Flood is not covered under this policy and is explicitly excluded.",
+    "kept_count": 1
+  },
+  {
+    "id": "E3",
+    "answer": "Theft claims must be filed with HomeShield within 30 days, or they may be denied.",
+    "kept_count": 1
+  },
+  {
+    "id": "F1",
+    "answer": "The Free plan is best-effort with no uptime SLA.",
+    "kept_count": 1
+  },
+  {
+    "id": "F2",
+    "answer": "The Team plan is capped at 25 seats.",
+    "kept_count": 1
+  },
+  {
+    "id": "F3",
+    "answer": "For customers in the EU, data is retained for only 30 days after cancellation to comply with GDPR minimization.",
+    "kept_count": 1
+  },
+  {
+    "id": "G1",
+    "answer": "Workshop fees are non-refundable once purchased.",
+    "kept_count": 1
+  },
+  {
+    "id": "G2",
+    "answer": "Only one transfer per ticket is permitted.",
+    "kept_count": 1
+  },
+  {
+    "id": "G3",
+    "answer": "Attendees may not record talks.",
+    "kept_count": 1
+  }
+]

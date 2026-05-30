@@ -16,8 +16,11 @@ _internal/
 docs/superpowers/
 
 # Benchmark scratch (generated locally by run.py)
-benchmark/hay/
 benchmark/results/run.json
 
 # Unrelated local project that shares this folder — not part of Subtraction
 my-video/
+benchmark/results/*_input.json
+__pycache__/
+*.pyc
+*_input.json
