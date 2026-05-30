@@ -10,3 +10,7 @@ Thumbs.db
 # Local scratch
 /tmp/
 *.local.md
+
+# Internal planning — never publish (kept locally, untracked)
+_internal/
+docs/superpowers/
