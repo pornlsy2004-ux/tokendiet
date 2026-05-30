@@ -6,13 +6,12 @@
 
 <img src="assets/demo.gif" alt="Subtraction demo — keep the relevant slice verbatim, drop the rest, same answer at a fraction of the tokens" width="840">
 
-<img src="assets/subtraction-result.svg" alt="Raw, compressed, and subtracted contexts score the same accuracy; subtraction uses ~1/8 the tokens" width="840">
+<img src="assets/subtraction-result.svg" alt="One fact in a 300K-token haystack: stuffing it overflows the window, keyword retrieval is fooled by decoys, subtraction answers correctly on 226 tokens" width="840">
 
 The reflex is to cram everything into the context window — and when it won't fit, to
-**compress** it so more does. We ran the controlled test: **compression didn't change
-accuracy at all.** What changed everything was *how much we included*. The relevant slice
-gave the same answer at **~1/8 the tokens** — and at scale, the research shows large
-contexts get *less* reliable, not more.
+**compress** it so more does. But scale is the trap. Hide one fact in **300,000 tokens**
+of look-alike noise: stuffing it all overflows the window, and keyword search gets fooled
+by the decoys. **Subtraction keeps the one true line — 226 tokens — and answers correctly.**
 
 The lever isn't how you pack the context. It's how little you put in it.
 
@@ -27,8 +26,8 @@ The lever isn't how you pack the context. It's how little you put in it.
 
 ## TL;DR
 
-- **Compression is a no-op for accuracy.** In our controlled test, full / compressed / subtracted contexts all scored the **same** — compression didn't help *or* hurt.
-- **Subtraction wins on cost, not magic.** Giving the model just the relevant sentence matched full-document accuracy at **~1/8 the tokens** (median 28 vs 218).
+- **At scale, including less is the only thing that works.** One fact in a **300,000-token** haystack: stuffing it all overflows the window, keyword top-3 gets fooled by look-alike decoys, and **subtraction answers correctly on 226 tokens.**
+- **Compression is a no-op for accuracy.** In a controlled small-doc test, full / compressed / subtracted contexts all scored the **same** — compression didn't help *or* hurt.
 - **Scale is the real enemy.** Peer-reviewed work shows every frontier model gets less reliable as input grows — even with *perfect* retrieval. ([receipts ↓](#the-part-thats-not-up-for-debate-scale))
 - **So: include less, fetch on demand.** Subtraction + [think-in-code](#the-cure-subtract), not a better compressor.
 
@@ -42,21 +41,23 @@ We started this repo believing the sharper version: *compression actively throws
 
 ## We measured it — and it changed our mind
 
-Same question, same model (Claude Opus 4.8), three context treatments: the **full document**, a **careful compression** (Opus told to compress while preserving all important info), and **subtraction** (just the one relevant sentence). 13 questions, each answer hinging on a specific buried detail — an exception, an override, a negation. Blind, exact-match scored.
+**One fact, buried in 300,000 tokens.** We hid a single answer — the activation key for the Orion uplink — in a 300K-token haystack of plausible business filler, then planted **four look-alike decoys** that share the question's keywords (a blank field, a `00000` placeholder, a *different* satellite's old key, a "don't store it here" note). Then we asked Claude Haiku the same question three ways:
 
-| | Accuracy | Median context tokens |
-|---|:---:|:---:|
-| **Raw** (full document) | 85% | 218 |
-| **Compressed** (~50%) | 85% | 108 |
-| **Subtracted** (relevant slice) | **85%** | **28** |
+| Method | Tokens to model | Answer | Correct? |
+|---|:---:|:---:|:---:|
+| **Stuff it all in** | 300,162 | *over the 200K window* | ✗ won't fit |
+| **Keyword top-3** (BM25) | 624 | "blank / 00000" | ✗ decoy |
+| **Subtraction** | **226** | **QX-7793-ZD** | ✓ correct |
 
-**A null result on compression.** It neither helped nor hurt — the careful summary kept the details, and accuracy didn't move. The one thing that collapsed was the token bill: **subtraction matched full-document accuracy on ~1/8 the tokens.** The whole run is reproducible against your own model and docs in **[/benchmark](benchmark/)** — including the cases where it *didn't* work (over-subtract and you cut the bridge a question needs).
+Stuffing the whole document doesn't even fit the window. Keyword retrieval is cheap, but the decoys **outrank the truth** — the real line lands at rank #4, so the top-3 answer is a placeholder. Subtraction keeps the one line that actually answers the question: **226 tokens, correct.** Fully reproducible (seed=11) in **[/benchmark/hay](benchmark/hay)**.
+
+**And a controlled null-result on compression.** On a separate small-doc set (13 questions, Claude Opus 4.8), the **full document**, a **careful compression** (~50%, told to preserve all important info), and **subtraction** all scored the **same 85%** — compression neither helped nor hurt accuracy; only the token bill moved (median 218 → 28). The whole run, including the cases where subtraction *didn't* work (over-subtract and you cut the bridge a question needs), is in [/benchmark](benchmark/).
 
 > We're publishing the result that killed our own headline. That's the point — if a claim can't survive its own benchmark, it shouldn't be in your prompt either.
 
 ## The part that's not up for debate: scale
 
-Our test ran on short documents. The reason to care about subtraction is what happens when context gets *long* — and here the literature is unambiguous.
+The needle test above runs at 300K — length is exactly where subtraction earns its keep. On what happens as context gets *long*, the literature is unambiguous.
 
 **Same fact, different position — the middle is a dead zone:**
 

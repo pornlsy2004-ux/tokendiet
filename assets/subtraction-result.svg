@@ -1,65 +1,44 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
   <rect width="1200" height="630" fill="#0d1117"/>
 
-  <text x="60" y="70" fill="#f0f6fc" font-size="40" font-weight="800">Same answer. A fraction of the tokens.</text>
-  <text x="60" y="106" fill="#8b949e" font-size="19">13 questions, Claude Opus 4.8 — full document vs. a careful compression vs. just the relevant sentence.</text>
+  <text x="60" y="72" fill="#f0f6fc" font-size="40" font-weight="800">One fact, buried in 300,000 tokens.</text>
+  <text x="60" y="106" fill="#8b949e" font-size="19">Find the Orion uplink key, hidden among four look-alike decoys. Claude Haiku answers from what each method feeds it.</text>
 
-  <!-- panel titles -->
-  <text x="345" y="150" fill="#c9d1d9" font-size="20" font-weight="700" text-anchor="middle">Accuracy</text>
-  <text x="875" y="150" fill="#c9d1d9" font-size="20" font-weight="700" text-anchor="middle">Median context tokens</text>
+  <!-- table frame -->
+  <rect x="60" y="140" width="1080" height="380" rx="14" fill="#0d1117" stroke="#30363d" stroke-width="1.5"/>
 
-  <!-- LEFT: accuracy gridlines 100@180 50@325 0@470 -->
-  <g stroke="#21262d" stroke-width="1">
-    <line x1="150" y1="180" x2="540" y2="180"/>
-    <line x1="150" y1="325" x2="540" y2="325"/>
-    <line x1="150" y1="470" x2="540" y2="470"/>
-  </g>
-  <g fill="#6e7681" font-size="14" text-anchor="end">
-    <text x="142" y="185">100%</text>
-    <text x="142" y="330">50%</text>
-    <text x="142" y="475">0%</text>
-  </g>
-  <!-- accuracy bars: all 85% -> top y=223 -->
-  <rect x="175" y="223" width="70" height="247" fill="#8b949e"/>
-  <rect x="295" y="223" width="70" height="247" fill="#58a6ff"/>
-  <rect x="415" y="223" width="70" height="247" fill="#3fb950"/>
-  <g fill="#f0f6fc" font-size="18" font-weight="700" text-anchor="middle">
-    <text x="210" y="214">85%</text>
-    <text x="330" y="214">85%</text>
-    <text x="450" y="214">85%</text>
-  </g>
-  <g fill="#8b949e" font-size="15" text-anchor="middle">
-    <text x="210" y="492">Raw</text>
-    <text x="330" y="492">Compressed</text>
-    <text x="450" y="492">Subtracted</text>
-  </g>
+  <!-- header -->
+  <text x="90" y="188" fill="#8b949e" font-size="18" font-weight="700">Method</text>
+  <text x="600" y="188" fill="#8b949e" font-size="18" font-weight="700" text-anchor="middle">Tokens to model</text>
+  <text x="835" y="188" fill="#8b949e" font-size="18" font-weight="700" text-anchor="middle">Answer</text>
+  <text x="1050" y="188" fill="#8b949e" font-size="18" font-weight="700" text-anchor="middle">Correct?</text>
+  <line x1="60" y1="210" x2="1140" y2="210" stroke="#30363d" stroke-width="1.5"/>
 
-  <!-- RIGHT: tokens gridlines (scale 0..240) 240@180 120@325 0@470 -->
-  <g stroke="#21262d" stroke-width="1">
-    <line x1="660" y1="180" x2="1080" y2="180"/>
-    <line x1="660" y1="325" x2="1080" y2="325"/>
-    <line x1="660" y1="470" x2="1080" y2="470"/>
-  </g>
-  <g fill="#6e7681" font-size="14" text-anchor="end">
-    <text x="652" y="185">240</text>
-    <text x="652" y="330">120</text>
-    <text x="652" y="475">0</text>
-  </g>
-  <!-- token bars: 218, 108, 28 -->
-  <rect x="665" y="207" width="70" height="263" fill="#8b949e"/>
-  <rect x="785" y="340" width="70" height="130" fill="#58a6ff"/>
-  <rect x="905" y="436" width="70" height="34" fill="#3fb950"/>
-  <g fill="#f0f6fc" font-size="18" font-weight="700" text-anchor="middle">
-    <text x="700" y="198">218</text>
-    <text x="820" y="331">108</text>
-    <text x="940" y="427">28</text>
-  </g>
-  <g fill="#8b949e" font-size="15" text-anchor="middle">
-    <text x="700" y="492">Raw</text>
-    <text x="820" y="492">Compressed</text>
-    <text x="940" y="492">Subtracted</text>
-  </g>
+  <!-- row 1: stuff it all in -->
+  <text x="90" y="270" fill="#c9d1d9" font-size="22" font-weight="600">Stuff it all in</text>
+  <text x="600" y="270" fill="#f0f6fc" font-size="22" font-weight="700" text-anchor="middle">300,162</text>
+  <text x="835" y="270" fill="#6e7681" font-size="18" text-anchor="middle">over the 200K limit</text>
+  <text x="1050" y="268" fill="#f85149" font-size="24" font-weight="800" text-anchor="middle">&#10007;</text>
+  <text x="1050" y="291" fill="#8b949e" font-size="13" text-anchor="middle">won't fit</text>
+  <line x1="60" y1="312" x2="1140" y2="312" stroke="#21262d" stroke-width="1"/>
 
-  <text x="60" y="560" fill="#c9d1d9" font-size="18" font-weight="600">Compression didn't change accuracy. Subtraction matched it using ~1/8 the tokens.</text>
-  <text x="60" y="588" fill="#6e7681" font-size="14">A null result on compression — and a clean win for including less. Reproducible: /benchmark · large-scale context rot: /docs/receipts.md</text>
+  <!-- row 2: keyword top-3 -->
+  <text x="90" y="372" fill="#c9d1d9" font-size="22" font-weight="600">Keyword top-3 <tspan fill="#6e7681" font-size="16" font-weight="400">(BM25)</tspan></text>
+  <text x="600" y="372" fill="#f0f6fc" font-size="22" font-weight="700" text-anchor="middle">624</text>
+  <text x="835" y="372" fill="#c9d1d9" font-size="18" text-anchor="middle">&#8220;blank / 00000&#8221;</text>
+  <text x="1050" y="370" fill="#f85149" font-size="24" font-weight="800" text-anchor="middle">&#10007;</text>
+  <text x="1050" y="393" fill="#8b949e" font-size="13" text-anchor="middle">decoy</text>
+  <line x1="60" y1="414" x2="1140" y2="414" stroke="#21262d" stroke-width="1"/>
+
+  <!-- row 3: subtraction (highlight) -->
+  <rect x="61" y="415" width="1078" height="103" rx="0" fill="#3fb950" opacity="0.08"/>
+  <text x="90" y="474" fill="#3fb950" font-size="22" font-weight="800">Subtraction</text>
+  <text x="600" y="474" fill="#f0f6fc" font-size="22" font-weight="800" text-anchor="middle">226</text>
+  <text x="835" y="474" fill="#3fb950" font-size="19" font-weight="700" text-anchor="middle">QX-7793-ZD</text>
+  <text x="1050" y="472" fill="#3fb950" font-size="24" font-weight="800" text-anchor="middle">&#10003;</text>
+  <text x="1050" y="495" fill="#8b949e" font-size="13" text-anchor="middle">correct</text>
+
+  <!-- caption -->
+  <text x="60" y="565" fill="#c9d1d9" font-size="18" font-weight="600">The decoys outrank the truth — keyword ranks the real line #4. Subtraction keeps it: 1 line, 226 tokens, right.</text>
+  <text x="60" y="592" fill="#6e7681" font-size="14">300K-token haystack, one true needle + four lexical decoys. Reproducible: /benchmark/hay · seed=11.</text>
 </svg>
