@@ -28,3 +28,6 @@ Repository = "https://github.com/pornlsy2004-ux/tokendiet"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/tokendiet"]
+
+[tool.hatch.build.targets.sdist]
+only-include = ["src/tokendiet", "README.md", "LICENSE", "pyproject.toml"]
