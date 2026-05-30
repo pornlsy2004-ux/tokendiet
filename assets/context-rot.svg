@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <rect width="1200" height="630" fill="#0d1117"/>
+
+  <!-- Title -->
+  <text x="60" y="78" fill="#f0f6fc" font-size="44" font-weight="800">Stop compressing context.</text>
+  <text x="60" y="126" fill="#3fb950" font-size="44" font-weight="800">Start subtracting it.</text>
+  <text x="60" y="166" fill="#8b949e" font-size="20" font-weight="400">Every frontier model gets less reliable as input grows — you can't compress your way out of rot.</text>
+
+  <!-- Plot frame -->
+  <!-- y gridlines + labels: 100% @170, 75% @252.5, 50% @335, 25% @417.5, 0% @500 -->
+  <g stroke="#21262d" stroke-width="1">
+    <line x1="170" y1="170" x2="1090" y2="170"/>
+    <line x1="170" y1="252" x2="1090" y2="252"/>
+    <line x1="170" y1="335" x2="1090" y2="335"/>
+    <line x1="170" y1="417" x2="1090" y2="417"/>
+    <line x1="170" y1="500" x2="1090" y2="500"/>
+  </g>
+  <g fill="#6e7681" font-size="15" text-anchor="end">
+    <text x="156" y="175">100%</text>
+    <text x="156" y="257">75%</text>
+    <text x="156" y="340">50%</text>
+    <text x="156" y="422">25%</text>
+    <text x="156" y="505">0%</text>
+  </g>
+  <text x="58" y="345" fill="#8b949e" font-size="15" transform="rotate(-90 58 345)" text-anchor="middle">task accuracy</text>
+
+  <!-- x axis labels (input context size) -->
+  <g fill="#6e7681" font-size="15" text-anchor="middle">
+    <text x="170" y="525">1K</text>
+    <text x="400" y="525">10K</text>
+    <text x="630" y="525">50K</text>
+    <text x="860" y="525">200K</text>
+    <text x="1090" y="525">1M</text>
+  </g>
+  <text x="630" y="560" fill="#8b949e" font-size="15" text-anchor="middle">input context (tokens) →</text>
+
+  <!-- Subtraction line (green, stays high) -->
+  <polyline fill="none" stroke="#3fb950" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
+            points="170,190 400,192 630,196 860,193 1090,199"/>
+  <circle cx="1090" cy="199" r="5" fill="#3fb950"/>
+
+  <!-- More-context line (red, declines) -->
+  <polyline fill="none" stroke="#f85149" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
+            points="170,193 400,229 630,282 860,351 1090,427"/>
+  <circle cx="1090" cy="427" r="5" fill="#f85149"/>
+
+  <!-- Inline labels -->
+  <text x="700" y="170" fill="#3fb950" font-size="18" font-weight="700">Subtract: keep it lean, fetch on demand</text>
+  <text x="690" y="408" fill="#f85149" font-size="18" font-weight="700">Add more context (compressed or not)</text>
+
+  <!-- Footer / source -->
+  <text x="60" y="600" fill="#6e7681" font-size="14">Illustrative. Sourced figures in /docs/receipts.md — Context Rot (Chroma, 2025) · Du et al. (EMNLP 2025) · Liu et al. (TACL 2024)</text>
+</svg>
