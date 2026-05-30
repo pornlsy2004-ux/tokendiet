@@ -1,10 +1,3 @@
-<!--
-  Before you publish:
-  1. Replace every OWNER/REPO below with your GitHub path (e.g. yourname/subtraction).
-  2. Charts live in /assets (SVG, render inline on GitHub).
-  3. The reproducible experiment is in /benchmark. Large-scale receipts in /docs/receipts.md.
--->
-
 <div align="center">
 
 # Subtraction
@@ -24,7 +17,7 @@ The lever isn't how you pack the context. It's how little you put in it.
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![Reproducible](https://img.shields.io/badge/benchmark-reproducible-3fb950.svg)](benchmark/)
-[![Stars](https://img.shields.io/github/stars/OWNER/REPO?style=social)](https://github.com/OWNER/REPO)
+[![Stars](https://img.shields.io/github/stars/pornlsy2004-ux/subtraction?style=social)](https://github.com/pornlsy2004-ux/subtraction)
 
 </div>
 
