@@ -22,6 +22,9 @@ dependencies = []
 tokens = ["tiktoken>=0.5"]
 dev = ["pytest>=7"]
 
+[project.scripts]
+tokendiet = "tokendiet.__main__:main"
+
 [project.urls]
 Homepage = "https://github.com/pornlsy2004-ux/tokendiet"
 Repository = "https://github.com/pornlsy2004-ux/tokendiet"
