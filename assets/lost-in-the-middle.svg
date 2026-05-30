@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <rect width="1200" height="630" fill="#0d1117"/>
+
+  <text x="60" y="72" fill="#f0f6fc" font-size="38" font-weight="800">Lost in the Middle</text>
+  <text x="60" y="108" fill="#8b949e" font-size="19">Same answer, moved through a 20-document context. Accuracy craters in the middle.</text>
+
+  <!-- gridlines 100@180 75@255 50@330 25@405 0@480 -->
+  <g stroke="#21262d" stroke-width="1">
+    <line x1="170" y1="180" x2="1090" y2="180"/>
+    <line x1="170" y1="255" x2="1090" y2="255"/>
+    <line x1="170" y1="330" x2="1090" y2="330"/>
+    <line x1="170" y1="405" x2="1090" y2="405"/>
+    <line x1="170" y1="480" x2="1090" y2="480"/>
+  </g>
+  <g fill="#6e7681" font-size="15" text-anchor="end">
+    <text x="156" y="185">100%</text>
+    <text x="156" y="260">75%</text>
+    <text x="156" y="335">50%</text>
+    <text x="156" y="410">25%</text>
+    <text x="156" y="485">0%</text>
+  </g>
+  <text x="70" y="330" fill="#8b949e" font-size="15" transform="rotate(-90 70 330)" text-anchor="middle">answer accuracy</text>
+
+  <g fill="#6e7681" font-size="15" text-anchor="middle">
+    <text x="200" y="505">1st (start)</text>
+    <text x="420" y="505">5th</text>
+    <text x="640" y="505">10th (middle)</text>
+    <text x="860" y="505">15th</text>
+    <text x="1080" y="505">20th (end)</text>
+  </g>
+  <text x="640" y="535" fill="#8b949e" font-size="15" text-anchor="middle">position of the answer document →</text>
+
+  <polyline fill="none" stroke="#f0883e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
+            points="200,255 420,294 640,315 860,291 1080,264"/>
+  <g fill="#f0883e"><circle cx="200" cy="255" r="6"/><circle cx="420" cy="294" r="6"/><circle cx="640" cy="315" r="6"/><circle cx="860" cy="291" r="6"/><circle cx="1080" cy="264" r="6"/></g>
+
+  <text x="200" y="240" fill="#c9d1d9" font-size="16" font-weight="600" text-anchor="middle">~75% primacy</text>
+  <text x="640" y="345" fill="#f85149" font-size="16" font-weight="700" text-anchor="middle">~55% dead middle</text>
+  <text x="1080" y="249" fill="#c9d1d9" font-size="16" font-weight="600" text-anchor="middle">~72% recency</text>
+
+  <text x="60" y="600" fill="#6e7681" font-size="14">Source: Liu, Lin, Hewitt, Paranjape, Bevilacqua, Petroni, Liang — "Lost in the Middle", TACL 2024. Figures read from the multi-doc QA setting.</text>
+</svg>

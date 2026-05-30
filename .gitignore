@@ -14,3 +14,7 @@ Thumbs.db
 # Internal planning — never publish (kept locally, untracked)
 _internal/
 docs/superpowers/
+
+# Benchmark scratch (generated locally by gen.py / run.py)
+benchmark/hay/
+benchmark/results/run.json
